@@ -1,0 +1,43 @@
+{
+    "name": "zhiephie/boilerplate-slim3",
+    "description": "Boilerplate for getting started with Slim Framework",
+    "keywords": ["Slim", "Eloquent", "Monolog", "Twig", "Framework"],
+    "homepage": "https://github.com/zhiephie/boilerplate-slim3",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yudi Purwanto",
+            "email": "yp@timexstudio.com",
+            "homepage": "http://www.timexstudio.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer dumpautoload -o"
+        ],
+        "post-update-cmd": [
+            "composer dumpautoload -o"
+        ]
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17",
+        "slim/twig-view": "^2.0",
+        "cartalyst/sentinel": "^2.0",
+        "illuminate/database": "^5.2",
+        "illuminate/events": "^5.2",
+        "phpmailer/phpmailer": "^5.2",
+		"symfony/http-foundation": "^3.0",
+        "slim/csrf": "^0.6.0",
+        "slim/http-cache": "^0.3.0",
+        "slim/flash": "^0.1.0",
+        "facebook/php-sdk-v4": "^5.1"
+    }
+}

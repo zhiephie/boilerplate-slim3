@@ -1,0 +1,178 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ .'/vendor/autoload.php';
+require __DIR__ .'/config/database.php';
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Cartalyst\Sentinel\Native\Facades\Sentinel;
+
+class Migrator {
+	
+    /**
+     * migrate the database schema
+     */
+    public function migrate() {
+        /**
+         * create table for sentinel user
+         */
+        if (!Capsule::schema()->hasTable('users')) {
+            Capsule::schema()->create('users', function($table)
+            {
+                $table->increments('id');
+                $table->string('email');
+                $table->string('password');
+                $table->text('permissions');
+                $table->timestamp('last_login')->nullable();
+                $table->string('first_name')->nullable();
+                $table->string('last_name')->nullable();
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->unique('email');
+                $table->index('first_name');
+                $table->index('last_name');
+            });
+        }
+
+        /**
+         * create table for sentinel activations
+         */
+        if (!Capsule::schema()->hasTable('activations')) {
+            Capsule::schema()->create('activations', function($table)
+            {
+                $table->increments('id');
+                $table->integer('user_id');
+                $table->string('code')->nullable();
+                $table->tinyInteger('completed')->default(0);
+                $table->timestamp('completed_at')->nullable();
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->unique('user_id');
+            });
+        }
+
+        /**
+         * create persistences table
+         */
+        if (!Capsule::schema()->hasTable('persistences')) {
+            Capsule::schema()->create('persistences', function($table)
+            {
+				$table->increments('id');
+                $table->integer('user_id');
+                $table->string('code');
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+				$table->unique('code');
+            });
+        }
+		
+		/**
+         * create reminders table
+         */
+        if (!Capsule::schema()->hasTable('reminders')) {
+            Capsule::schema()->create('reminders', function($table)
+            {
+				$table->increments('id');
+                $table->integer('user_id');
+                $table->string('code');
+                $table->tinyInteger('completed')->default(0);
+                $table->timestamp('completed_at');
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+            });
+        }
+		
+		/**
+         * create roles table
+         */
+        if (!Capsule::schema()->hasTable('roles')) {
+            Capsule::schema()->create('roles', function($table)
+            {
+				$table->increments('id');
+                $table->string('slug');
+                $table->string('name');
+                $table->text('permissions');
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+				$table->unique('slug');
+            });
+        }
+		
+		/**
+         * create role_users table
+         */
+        if (!Capsule::schema()->hasTable('role_users')) {
+            Capsule::schema()->create('role_users', function($table)
+            {
+				$table->integer('user_id');
+                $table->integer('role_id');
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->primary(array('user_id', 'role_id'));
+            });
+        }
+
+        /**
+         * create throttle table
+         */
+        if (!Capsule::schema()->hasTable('throttle')) {
+            Capsule::schema()->create('throttle', function($table)
+            {
+                $table->increments('id');
+                $table->integer('user_id')->unsigned();
+                $table->string('type');
+                $table->string('ip')->nullable();
+                $table->timestamps();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->unique('user_id');
+            });
+        }
+    }
+
+    /**
+     * seed the database with initial value
+     */
+    public function seed() {
+        try {
+           $credentials = [
+				'email'    => 'admin@admin.com',
+				'password' => 'password',
+				'first_name' => 'Yudi',
+				'last_name' => 'Purwanto',
+			];
+
+			$user = Sentinel::registerAndActivate($credentials);
+			
+        } catch(Exception $e) {
+            echo $e->getMessage()."\n";
+        }
+    }
+}
+
+$migrator = new Migrator();
+
+$migrator->migrate();
+$migrator->seed();
+
+print("Migration Successfully");
