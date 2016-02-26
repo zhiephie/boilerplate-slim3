@@ -23,8 +23,8 @@ return [
 		
 		// Facebook App
 		'facebook' => [
-			'app_id' => '515777708475394',
-			'app_secret' => '930dcf220e95164fc713ada5548a9d54',
+			'app_id' => '',
+			'app_secret' => '',
 			'default_graph_version' => 'v2.5',
 		],
     ],
