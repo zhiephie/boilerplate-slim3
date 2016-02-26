@@ -12,7 +12,7 @@ $ composer install
 
 #####2 Alternative install via ```composer```
 ```
-$ composer create-project zhiephie/boilerplate-slim3
+$ composer require zhiephie/boilerplate-slim3
 ```
 
 #####3 Setup Permission
