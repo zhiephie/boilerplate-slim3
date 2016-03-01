@@ -1,7 +1,7 @@
 # Boilerplate for Slim Framework 3
   Boilerplate for getting started with Slim Framework
   
-  Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View, Twig template engine, Eloquent Laravel, Sentinel authentication provider, SDK Facebook. It also uses the Monolog logger.
+  Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3.
 	
 ###Features
 
