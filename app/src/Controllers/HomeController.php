@@ -1,5 +1,5 @@
 <?php 
-namespace App\Controller;
+namespace App\Controllers;
 
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;

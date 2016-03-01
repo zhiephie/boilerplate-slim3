@@ -79,17 +79,12 @@ $container['activation'] = function ($c) {
 	return new \Cartalyst\Sentinel\Activations\IlluminateActivationRepository;
 };
 
-// Generate Reminder Code
-$container['reminder'] = function ($c) {
-	return new \Cartalyst\Sentinel\Reminders\IlluminateReminderRepository;
-};
-
 # -----------------------------------------------------------------------------
 # Action factories
 # -----------------------------------------------------------------------------
 
-$container['App\Controller\HomeController'] = function ($c) {
-    return new App\Controller\HomeController(
+$container['App\Controllers\HomeController'] = function ($c) {
+    return new App\Controllers\HomeController(
 		$c->get('view'), 
 		$c->get('logger')
     );
