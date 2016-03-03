@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-class Medias  {
+class Media  {
 
 	/**
 	 * Get the media url for redactor
