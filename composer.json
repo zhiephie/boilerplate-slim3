@@ -39,5 +39,6 @@
         "slim/http-cache": "^0.3.0",
         "slim/flash": "^0.1.0",
         "facebook/php-sdk-v4": "^5.1"
+        
     }
 }

@@ -67,25 +67,60 @@ $container['errorHandler'] = function ($c) {
   };
 };
 
-// mailer
-$container['Mailer'] = function ($c) {
-    return new App\Service\Mailer(
-        $c->get('view')
-    );
-};
-
 // Generate Activation Code
 $container['activation'] = function ($c) {
 	return new \Cartalyst\Sentinel\Activations\IlluminateActivationRepository;
 };
 
 # -----------------------------------------------------------------------------
-# Action factories
+# Action factories Controllers
 # -----------------------------------------------------------------------------
 
 $container['App\Controllers\HomeController'] = function ($c) {
     return new App\Controllers\HomeController(
 		$c->get('view'), 
-		$c->get('logger')
+		$c->get('logger'),
+		$c->get('App\Repositories\HomeRepository')
+    );
+};
+
+$container['App\Controllers\UserController'] = function ($c) {
+    return new App\Controllers\UserController(
+		$c->get('view'), 
+		$c->get('logger'),
+		$c->get('App\Repositories\UserRepository')
+    );
+};
+# -----------------------------------------------------------------------------
+# Factories Models
+# -----------------------------------------------------------------------------
+
+$container['Model\User'] = function ($c) {
+    return new App\Models\User;
+};
+
+# -----------------------------------------------------------------------------
+# Factories Repositories
+# -----------------------------------------------------------------------------
+
+$container['App\Repositories\HomeRepository'] = function ($c) {
+	return new App\Repositories\HomeRepository(
+        $c->get('Model\User')
+	);
+};
+
+$container['App\Repositories\UserRepository'] = function ($c) {
+	return new App\Repositories\UserRepository(
+        $c->get('Model\User')
+	);
+};
+
+# -----------------------------------------------------------------------------
+# Factories Services
+# -----------------------------------------------------------------------------
+
+$container['Mailer'] = function ($c) {
+    return new App\Service\Mailer(
+        $c->get('view')
     );
 };
