@@ -12,6 +12,7 @@
 - Sentinel Authentication provider
 - Include SDK Facebook
 - Logger Monolog
+- AdminLTE soon
 
 
 #####1 Manual Install
