@@ -42,4 +42,9 @@ Configuration file located in ```config```, edit the database.php, setting.php
 $ php migrate
 ```
 
+#####6 Run Server  ```php -S localhost:8000 -t public```
+```
+$ php -S localhost:8000 -t public
+```
+
 ###That's it! Now go build something cool.
