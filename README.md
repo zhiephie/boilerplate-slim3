@@ -2,6 +2,10 @@
   Boilerplate for getting started with Slim Framework
   
   Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3.
+  
+###Requirements:
+- PHP 5.5 or newer
+- PDO PHP Extension
 	
 ###Features
 
