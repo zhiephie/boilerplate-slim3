@@ -39,7 +39,7 @@
         "slim/http-cache": "^0.3.0",
         "slim/flash": "^0.1.0",
         "facebook/php-sdk-v4": "^5.1",
-	"siriusphp/validation": "^1.2.*"
+	"siriusphp/validation": "1.2.*"
     },
     "require-dev": {
     	"phpunit/phpunit": "5.5.*"
