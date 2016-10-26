@@ -34,11 +34,11 @@
         "illuminate/database": "^5.2",
         "illuminate/events": "^5.2",
         "phpmailer/phpmailer": "^5.2",
-	    "symfony/http-foundation": "^3.0",
+	"symfony/http-foundation": "^3.0",
         "slim/csrf": "^0.6.0",
         "slim/http-cache": "^0.3.0",
         "slim/flash": "^0.1.0",
-	    "siriusphp/validation": "1.2.*",
+	"siriusphp/validation": "1.2.*",
         "facebook/graph-sdk": "^5.4"
     },
     "require-dev": {
