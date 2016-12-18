@@ -1,4 +1,4 @@
-# Boilerplate for Slim Framework 3 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=purwantoyudi42%40gmail%2ecom&lc=ZA&item_name=Timex%20Studio&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+# Boilerplate for Slim Framework 3 [![Build Status](https://travis-ci.org/zhiephie/boilerplate-slim3.svg?branch=master)](https://travis-ci.org/zhiephie/boilerplate-slim3) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=purwantoyudi42%40gmail%2ecom&lc=ZA&item_name=Timex%20Studio&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
   Boilerplate for getting started with Slim Framework
   
   Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3.
