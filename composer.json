@@ -33,7 +33,7 @@
         "cartalyst/sentinel": "^2.0",
         "illuminate/database": "^5.2",
         "illuminate/events": "^5.2",
-        "phpmailer/phpmailer": "^5.2",
+        "phpmailer/phpmailer": "^6.1",
 	"symfony/http-foundation": "^3.0",
         "slim/csrf": "^0.6.0",
         "slim/http-cache": "^0.3.0",
